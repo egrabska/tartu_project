@@ -1,0 +1,60 @@
+---
+title: "Key takeaways from AGILE PhD School 2019"
+author: "Ewa"
+date: "28 listopada 2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Visualization
+I still not a fan of using QGIS for producing my maps, but the animations from the time manager are pretty cool!
+
+![Arctic](gif_Arctic.gif){width=650px}
+
+
+## Reproducibility
+
+Sentinel-2 imagery is available for free. You can donload them from [ESA SciHub](https://scihub.copernicus.eu/) or [CREODIAS finder](https://finder.creodias.eu/).
+As a reference data I use freely available Forest Data Bank available [here](https://www.bdl.lasy.gov.pl/portal/udostepnianie-en).
+In this database, there are basic units called _subareas_, and for each subarea, the share of particular species is known. 
+
+I performed processing in R software using packages: **raster**, **RStoolbox** and **caTools**
+The most important functions were:
+
+
+* [`stack()`](https://www.rdocumentation.org/packages/raster/versions/3.0-7/topics/stack) for reading satellite imagery
+
+* [`shapefile()`](https://www.rdocumentation.org/packages/raster/versions/3.0-7/topics/shapefile) for reading shp containing reference areas
+
+* [`sample.split()`](https://www.rdocumentation.org/packages/caTools/versions/1.17.1/topics/sample.split) for dividing reference polygons into training and validation data
+
+* [`superClass()`](https://www.rdocumentation.org/packages/RStoolbox/versions/0.2.6/topics/superClass) for super-vised image classification. 
+
+I really need to make a repository with my scripts, because there are too many of them :o
+![Scripts folder](scripts.png)
+This is just a small part!!!
+
+
+
+The results of this study were published in Remote Sensing, you can find the article [here](https://www.mdpi.com/2072-4292/11/10/1197/htm)
+
+
+
+## Science communication
+#### Key remarks from my study are:
+* I tested three machine learning algorithms and ensemble approach for stand species classification with the use of Sentinel-2 imagery for large and mountainous area. These algorithms included Random Forest, Support Vector Machines and Extreme Gradient Boosting. The classification was performed on different input datasets including multi-temporal imagery, statistical values and environmental variables.
+
+* There is a lack of studies of species composition for large and mountainous areas with highly diversified species composition and environmental values. Also, new, very popular machine learning algorithm – xgboost, hasn’t yet been tested in this topic. There is a need to examine also which variables are crucial for the discrimination of particular species.
+
+* It turned out that with the use of large S2 composites in combination with elevation layer it is possible to achieve high accuracies – over 85%. The SVM algorithm performed better in this large study area, while in very much studies on forest classification only RF is used. Also, the ensemble approach works well, i.e. the combination of 5 best classification results provided the highest accuracy.
+
+* he need of testing different approaches, i.e. classification algorithms and input datasets, and use of ensemble approach more often, than just trusting a single classification model. SVM provides higher accuracies than RF.
+
+* We can use S2 imagery in operational forest monitoring, not only in species composition but also in other aspects, which is very important in the era of climate change and changing environment. Creating forest maps based on satellite imagery for large areas can help in forest management, biomass and carbon estimating, analysis of wood production etc.
+
+* Sentinel-2 multi-temporal data provides forest stand species maps with high accuracy for large, mountainous areas.
+
+* There are still some limitations of using S2 data, for example, for the areas with frequent cloud cover there is a lack of clear observations. Especially for spring and autumn, there are fast changes in phenology, thus the use of this key moments is crucial for discrimination of some species. Furthermore, the spatial resolution of Sentinel-2 is still only 10 meters which on the one hand enables mapping main tree species, but on the other hand is not enough to map species that are very rare and do not form homogeneous stands. 
