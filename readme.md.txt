@@ -2,4 +2,5 @@
 
 Tartu, 25-28 November 2019
 
-![Multi-temporal Sentinel 2 imagery](C:/Users/aweak/OneDrive/Pulpit/sentinel2.jpg)
+![Multi-temporal Sentinel 2 imagery](sentinel2.jpg)
+License: CC-BY-4.0.
