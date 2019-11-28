@@ -10,7 +10,7 @@ knitr::opts_chunk$set(echo = TRUE)
 ```
 
 ## Visualization
-I still not a fan of using QGIS for producing my maps, but the animations from the time manager are pretty cool!
+I am still not a fan of using QGIS for producing my maps, but the animations from the time manager are pretty cool!
 
 ![Arctic](gif_Arctic.gif){width=650px}
 
